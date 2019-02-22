@@ -1,0 +1,13 @@
+stages:
+- name: Create image
+  steps:
+  - runScriptConfig:
+      image: python:latest
+      shellScript: echo "test"
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: mademo/demo:0.1
+      pushRemote: true
+      registry: http://myip.8081/repository/
+timeout: 60
